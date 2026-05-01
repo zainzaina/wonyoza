@@ -1,0 +1,206 @@
+/* ===== wonyoza — kawaii pink design system ===== */
+:root {
+  --background: #ffe4ec;
+  --foreground: #7a4a5a;
+  --card: #ffffff;
+  --primary: #f4a4b8;
+  --primary-dark: #e07a96;
+  --primary-foreground: #ffffff;
+  --secondary: #ffe0ea;
+  --muted: #fff0f4;
+  --muted-foreground: #b07a8a;
+  --accent: #ffc9d8;
+  --frame: #f4b5c5;
+  --soft: #fff5f8;
+  --gingham: #ffd0dc;
+  --radius: 1rem;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Quicksand', system-ui, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  background-image:
+    linear-gradient(rgba(255, 208, 220, 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 208, 220, 0.55) 1px, transparent 1px);
+  background-size: 22px 22px;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.font-display {
+  font-family: 'Fredoka', 'Quicksand', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ===== layout ===== */
+.container { max-width: 1024px; margin: 0 auto; }
+
+/* ===== reusable components ===== */
+.kawaii-frame {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 2px dashed var(--frame);
+  box-shadow: 0 0 0 6px var(--soft), 0 8px 24px -8px rgba(244, 164, 184, 0.5);
+  padding: 1.5rem;
+}
+
+.kawaii-pill {
+  display: inline-block;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 4px 0 0 var(--primary-dark);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.kawaii-pill:hover { transform: translateY(-2px); box-shadow: 0 6px 0 0 var(--primary-dark); }
+.kawaii-pill:active { transform: translateY(2px); box-shadow: 0 1px 0 0 var(--primary-dark); }
+.kawaii-pill.active { filter: brightness(0.92); transform: translateY(2px); box-shadow: 0 1px 0 0 var(--primary-dark); }
+
+.kawaii-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--foreground);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-family: 'Fredoka', sans-serif;
+}
+
+/* ===== header / nav ===== */
+.site-header {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.site-header .small { font-size: 0.875rem; color: var(--muted-foreground); }
+.site-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-shadow: 0 3px 0 var(--frame);
+  margin: 0.25rem 0;
+}
+.site-tag { font-size: 0.875rem; color: var(--muted-foreground); margin-bottom: 1.25rem; }
+.nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+
+/* ===== grids ===== */
+.grid { display: grid; gap: 1.5rem; }
+.grid-3 { grid-template-columns: 1fr; }
+.grid-2 { grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .grid-3 { grid-template-columns: 1fr 1.5fr 1fr; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-2-aside { grid-template-columns: 1fr 2fr; }
+  .site-title { font-size: 4rem; }
+  body { padding: 3rem 1rem; }
+}
+
+/* ===== content blocks ===== */
+.center { text-align: center; }
+.stack > * + * { margin-top: 1rem; }
+.stack-sm > * + * { margin-top: 0.5rem; }
+
+.profile-img { display: block; margin: 0 auto; max-width: 180px; height: auto; }
+.profile-name { font-family: 'Fredoka', sans-serif; font-size: 1.125rem; color: var(--primary); margin-top: 0.5rem; }
+.profile-sub { font-size: 0.75rem; color: var(--muted-foreground); }
+
+.info-box {
+  background: rgba(255, 224, 234, 0.6);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  font-size: 0.75rem;
+  font-family: 'Fredoka', sans-serif;
+}
+.info-box p + p { margin-top: 0.4rem; }
+
+.section-title {
+  font-family: 'Fredoka', sans-serif;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.list { list-style: none; font-size: 0.75rem; }
+.list li { margin-bottom: 0.5rem; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin-top: 0.75rem; }
+
+p.body-text { font-size: 0.95rem; line-height: 1.6; }
+b { color: var(--primary); }
+
+.diary-entry {
+  border: 2px dashed var(--frame);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 245, 248, 0.5);
+}
+.diary-entry header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.diary-entry .title { font-family: 'Fredoka', sans-serif; color: var(--primary); }
+
+.link-list { list-style: none; }
+.link-list li {
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255, 224, 234, 0.6);
+  padding: 0.5rem 0.75rem; border-radius: 0.75rem; margin-bottom: 0.5rem; font-size: 0.875rem;
+}
+.link-list .name { font-family: 'Fredoka', sans-serif; color: var(--primary); }
+
+.friend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; list-style: none; }
+.friend-grid .kawaii-pill { display: block; text-align: center; }
+
+/* ===== forms ===== */
+.field {
+  width: 100%;
+  border: 2px dashed var(--frame);
+  background: rgba(255, 245, 248, 0.6);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  outline: none;
+  resize: none;
+}
+.field:focus { border-color: var(--primary); border-style: solid; }
+.field + .field { margin-top: 0.75rem; }
+.btn-full { width: 100%; margin-top: 0.75rem; }
+
+.guest-entry {
+  background: rgba(255, 224, 234, 0.6);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.guest-entry header { display: flex; justify-content: space-between; align-items: center; }
+.guest-entry .name { font-family: 'Fredoka', sans-serif; color: var(--primary); font-size: 0.875rem; }
+.guest-entry p { font-size: 0.875rem; margin-top: 0.25rem; }
+.note-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+.kawaii-pill.small {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+/* ===== footer ===== */
+.site-footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+.site-footer p + p { margin-top: 0.5rem; }
